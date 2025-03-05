@@ -1,3 +1,4 @@
+/* Global Styles */
 * {
     box-sizing: border-box;
 }
@@ -11,9 +12,10 @@ body {
     align-items: center;
     height: 100vh;
     flex-direction: column;
+    transition: background 0.3s, color 0.3s;
 }
 
-/* Navigation bar */
+/* Navigation Bar */
 .navbar {
     width: 100%;
     background-color: #00FFCC;
@@ -21,7 +23,7 @@ body {
     top: 0;
     left: 0;
     z-index: 1;
-    display: none;
+    display: none; /* Initially hidden */
 }
 .navbar a {
     color: #000;
@@ -35,7 +37,7 @@ body {
     color: black;
 }
 
-/* Vertical menu */
+/* Vertical Menu */
 .vertical-menu {
     display: none;
     position: absolute;
@@ -66,6 +68,23 @@ body {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     width: 300px;
     text-align: center;
+    z-index: 0;
+}
+h2 {
+    margin-bottom: 20px;
+}
+label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+}
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
 }
 button {
     width: 100%;
@@ -80,8 +99,18 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+.forgot-password {
+    margin-top: 10px;
+}
+.forgot-password a {
+    color: #007bff;
+    text-decoration: none;
+}
+.forgot-password a:hover {
+    text-decoration: underline;
+}
 
-/* Photo Container */
+/* Photo Gallery */
 .photo-container {
     display: flex;
     flex-wrap: wrap;
@@ -100,4 +129,74 @@ button:hover {
 .photo-container .box img {
     width: 100%;
     height: auto;
+    object-fit: cover;
+}
+.photo-container .box .description {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Responsive Photo Layout */
+@media (max-width: 768px) {
+    .photo-container .box {
+        width: calc(50% - 30px);
+    }
+}
+@media (max-width: 480px) {
+    .photo-container .box {
+        width: 100%;
+    }
+}
+
+/* Exercise Section */
+.exercise-title {
+    font-size: 30px;
+    text-align: center;
+    margin-top: 50px;
+}
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+.workout-plan {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 10px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.workout-plan h2 {
+    color: #007BFF;
+}
+.workout-plan p {
+    font-size: 16px;
+    color: #555;
+}
+.exercises {
+    margin-top: 20px;
+}
+.exercises ul {
+    list-style-type: none;
+    padding: 0;
+}
+.exercises li {
+    padding: 5px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Dark Mode */
+.dark-mode {
+    background-color: #121212 !important;
+    color: #ffffff !important;
+}
+.dark-mode .navbar, .dark-mode .vertical-menu {
+    background-color: #008080;
+}
+.dark-mode .vertical-menu a {
+    color: white;
+}
+.dark-mode .login-container {
+    background-color: #333;
 }
