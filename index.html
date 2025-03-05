@@ -4,47 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workout Buddy</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css"> <!-- External CSS -->
 </head>
 <body>
+
     <!-- Login Form -->
     <div class="login-container" id="login-container">
         <h2>Login</h2>
         <form id="login-form">
             <label for="username">Username</label>
             <input type="text" id="username" name="username" required>
+
             <label for="password">Password</label>
             <input type="password" id="password" name="password" required>
+
             <button type="submit">Log In</button>
+
+            <div class="forgot-password">
+                <a href="#">Forgot password?</a>
+            </div>
         </form>
     </div>
-    
+
     <!-- Navigation Bar -->
-    <div class="navbar" id="navbar" style="display: none;">
-        <a href="#" id="show-timer">Timer</a>
+    <div class="navbar" id="navbar">
+        <a href="javascript:void(0);" id="menu-btn">Menu</a>
         <a href="#">Music</a>
-        <a href="#">Logging out</a>
-    </div>
-    
-    <!-- Timer Section -->
-    <div id="timer" class="timer-container" style="display: none;">
-        <div class="timer-display">00:00</div>
-        <input type="number" id="minutes" placeholder="Minutes">
-        <input type="number" id="seconds" placeholder="Seconds">
-        <button id="start">Start</button>
-        <button id="pause">Pause</button>
-        <button id="reset">Reset</button>
+        <a href="#">Timer</a>
+        <a href="#">Logout</a>
+
+        <!-- Vertical menu -->
+        <div class="vertical-menu" id="vertical-menu">
+            <a href="#" id="exercise-btn">Exercises</a>
+            <a href="#" id="workout-btn">Workouts</a>
+            <a href="#">Health</a>
+        </div>
     </div>
 
-    <!-- Vertical menu -->
-    <div class="vertical-menu" id="vertical-menu">
-        <a href="#" id="exercise-btn">Exercises</a>
-        <a href="#" id="workout-btn">Workouts</a>
-        <a href="#">Health</a>
-        <a href="#">VitalEats</a>
-    </div>
-
-   <!-- Exercises Section -->
+    <!-- Exercises Section -->
     <div id="exercise-section" style="display: none;">
         <div class="exercise-title">Exercises</div>
         <div class="photo-container">
@@ -56,38 +53,26 @@
                 <img src="https://homeworkouts.org/wp-content/uploads/anim-sit-ups.gif" alt="Sit-up">
                 <div class="description">Sit-up: Targets the core muscles.</div>
             </div>
-            <div class="box">
-                <img src="https://www.inspireusafoundation.org/wp-content/uploads/2022/08/chain-sumo-squat.gif" alt="Squat">
-                <div class="description">Squats: Builds lower body strength.</div>
-            </div>
-            <div class="box">
-                <img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/plank.gif" alt="Plank">
-                <div class="description">Plank: Strengthens core and back.</div>
-            </div>
-            <div class="box">
-                <img src="https://fitnessprogramer.com/wp-content/uploads/2021/08/High-Knee-Run.gif" alt="High Knees">
-                <div class="description">High Knees: Great for cardio.</div>
-            </div>
-            <div class="box">
-                <img src="https://th.bing.com/th/id/OIP.n3mEsjmMoIlfp1rbiINjTAAAAA?rs=1&pid=ImgDetMain" alt="Jumping Jacks">
-                <div class="description">Jumping Jacks:</div>
-            </div>
-        </div>
-    </div> 
-    
-    <!-- Workout Plans Section -->
-    <div id="workout-section" style="display: none;">
-        <h1>Choose Your Workout Plan</h1>
-        <button onclick="showWorkout('morning')">Morning Workout</button>
-        <button onclick="showWorkout('daily')">Daily Workout</button>
-        <button onclick="showWorkout('sevenDays')">7 Days Workout</button>
-        <div id="workoutDetails" class="workout-plan-details" style="display:none;">
-            <h2 id="workoutTitle"></h2>
-            <p id="workoutDescription"></p>
-            <ul id="exercises"></ul>
         </div>
     </div>
-    
-    <script src="script.js"></script>
+
+    <!-- Workout Plans Section -->
+    <div id="workout-section" style="display: none;">
+        <div class="container">
+            <h1>Choose Your Workout Plan</h1>
+            <button onclick="showWorkout('morning')">Morning Workout</button>
+            <button onclick="showWorkout('daily')">Daily Workout</button>
+            <button onclick="showWorkout('sevenDays')">7 Days Workout</button>
+
+            <!-- Display workout details here -->
+            <div id="workoutDetails" class="workout-plan" style="display:none;">
+                <h2 id="workoutTitle"></h2>
+                <p id="workoutDescription"></p>
+                <div id="exercises" class="exercises"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script> <!-- External JS -->
 </body>
 </html>
