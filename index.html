@@ -4,75 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workout Buddy</title>
-    <link rel="stylesheet" href="styles.css"> <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="d-flex flex-column align-items-center justify-content-center vh-100">
 
     <!-- Login Form -->
     <div class="login-container" id="login-container">
         <h2>Login</h2>
         <form id="login-form">
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" required>
-
+            <input type="text" id="username" class="form-control mb-2" required>
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
-
-            <button type="submit">Log In</button>
-
-            <div class="forgot-password">
-                <a href="#">Forgot password?</a>
+            <input type="password" id="password" class="form-control mb-2" required>
+            <button type="submit" class="btn btn-primary w-100">Log In</button>
+            <div class="forgot-password mt-2">
+                <a href="#" class="text-primary">Forgot password?</a>
             </div>
         </form>
     </div>
 
     <!-- Navigation Bar -->
-    <div class="navbar" id="navbar">
-        <a href="javascript:void(0);" id="menu-btn">Menu</a>
-        <a href="#">Music</a>
-        <a href="#">Timer</a>
-        <a href="#">Logout</a>
-
-        <!-- Vertical menu -->
-        <div class="vertical-menu" id="vertical-menu">
-            <a href="#" id="exercise-btn">Exercises</a>
-            <a href="#" id="workout-btn">Workouts</a>
-            <a href="#">Health</a>
+    <nav class="navbar navbar-expand-lg navbar-light w-100 p-3 d-none" id="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand">Workout Buddy</a>
+            <button class="btn btn-dark" id="dark-mode-toggle">🌙 Dark Mode</button>
+            <button class="btn btn-primary ms-2" id="menu-btn">Menu</button>
+            <button class="btn btn-danger ms-auto" id="logout-btn">Logout</button>
         </div>
+    </nav>
+
+    <!-- Vertical Menu -->
+    <div class="vertical-menu" id="vertical-menu" style="display: none;">
+        <a href="#" id="exercise-btn">Exercises</a>
+        <a href="#" id="workout-btn">Workouts</a>
+        <a href="#">Health</a>
     </div>
 
     <!-- Exercises Section -->
-    <div id="exercise-section" style="display: none;">
-        <div class="exercise-title">Exercises</div>
-        <div class="photo-container">
-            <div class="box">
-                <img src="https://homeworkouts.org/wp-content/uploads/anim-push-ups.gif" alt="Push-up">
-                <div class="description">Push-up: Strengthens upper body.</div>
+    <div id="exercise-section" class="container d-none">
+        <h2 class="text-center mt-4">Exercises</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="https://homeworkouts.org/wp-content/uploads/anim-push-ups.gif" class="img-fluid" alt="Push-ups">
+                <p>Push-ups: Strengthens upper body.</p>
             </div>
-            <div class="box">
-                <img src="https://homeworkouts.org/wp-content/uploads/anim-sit-ups.gif" alt="Sit-up">
-                <div class="description">Sit-up: Targets the core muscles.</div>
+            <div class="col-md-4">
+                <img src="https://homeworkouts.org/wp-content/uploads/anim-sit-ups.gif" class="img-fluid" alt="Sit-ups">
+                <p>Sit-ups: Targets the core muscles.</p>
+            </div>
+            <div class="col-md-4">
+                <img src="https://www.inspireusafoundation.org/wp-content/uploads/2022/08/chain-sumo-squat.gif" class="img-fluid" alt="Squats">
+                <p>Squats: Builds lower body strength.</p>
+            </div>
+            <div class="col-md-4">
+                <img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/plank.gif" class="img-fluid" alt="Plank">
+                <p>Plank: Strengthens core and back.</p>
+            </div>
+            <div class="col-md-4">
+                <img src="https://fitnessprogramer.com/wp-content/uploads/2021/08/High-Knee-Run.gif" class="img-fluid" alt="High Knees">
+                <p>High Knees: Great for cardio.</p>
+            </div>
+            <div class="col-md-4">
+                <img src="https://i.ytimg.com/vi/uckYc_gtyf8/maxresdefault.jpg" class="img-fluid" alt="Mountain Climbers">
+                <p>Mountain Climbers: Full-body workout.</p>
             </div>
         </div>
     </div>
 
-    <!-- Workout Plans Section -->
-    <div id="workout-section" style="display: none;">
-        <div class="container">
-            <h1>Choose Your Workout Plan</h1>
-            <button onclick="showWorkout('morning')">Morning Workout</button>
-            <button onclick="showWorkout('daily')">Daily Workout</button>
-            <button onclick="showWorkout('sevenDays')">7 Days Workout</button>
-
-            <!-- Display workout details here -->
-            <div id="workoutDetails" class="workout-plan" style="display:none;">
-                <h2 id="workoutTitle"></h2>
-                <p id="workoutDescription"></p>
-                <div id="exercises" class="exercises"></div>
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js"></script> <!-- External JS -->
+    <script src="script.js"></script>
 </body>
 </html>
+
