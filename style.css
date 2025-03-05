@@ -1,135 +1,103 @@
-/* Global Styles */ 
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #ffffff, #f0f0f0); /* Changed background to light gradient */
-    color: black; /* Changed text color to black */
+    margin: 0;
+    background-color: #f4f4f4;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: flex-start;
-    min-height: 100vh;
-    animation: fadeIn 1s ease-in-out;
+    height: 100vh;
+    flex-direction: column;
 }
 
-/* Navbar */
+/* Navigation bar */
 .navbar {
     width: 100%;
-    background-color: rgba(128, 128, 128, 0.9);
+    background-color: #00FFCC;
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 1;
     display: none;
-    justify-content: space-around;
-    padding: 10px;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out;
-    transform: translateY(-10px);
+}
+.navbar a {
+    color: #000;
+    padding: 14px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
 }
 
-.navbar.show {
-    display: flex;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Vertical Menu */
+/* Vertical menu */
 .vertical-menu {
     display: none;
-    position: fixed;
-    top: 60px;
-    left: 0;
+    position: absolute;
+    top: 50px;
+    background-color: #00FFCC;
     width: 200px;
-    background-color: rgba(50, 50, 50, 0.95);
-    padding: 15px;
-    border-radius: 0 10px 10px 0;
-    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.5);
+    left: 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 2;
 }
-
-.vertical-menu.show {
-    display: block;
-}
-
 .vertical-menu a {
-    display: block;
-    padding: 10px;
-    color: white;
+    color: #000;
+    padding: 10px 15px;
     text-decoration: none;
-    transition: background 0.3s;
+    display: block;
+    font-size: 20px;
 }
-
 .vertical-menu a:hover {
-    background-color: #ff3333;
+    background-color: #ddd;
+    color: black;
 }
 
-/* Login Container */
+/* Login Form */
 .login-container {
-    background: rgba(255, 255, 255, 0.95);
+    background-color: #fff;
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
-    width: 90%;
-    max-width: 400px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 300px;
     text-align: center;
 }
-
-h2 {
-    color: #ff3333;
-    margin-bottom: 10px;
-}
-
-input[type="text"], input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    font-size: 16px;
-}
-
 button {
     width: 100%;
-    padding: 12px;
-    background-color: #ff3333;
+    padding: 10px;
+    background-color: #007bff;
     border: none;
     border-radius: 5px;
     color: #fff;
     font-size: 16px;
     cursor: pointer;
-    transition: background 0.3s;
 }
-
 button:hover {
-    background-color: #b30000;
+    background-color: #0056b3;
 }
 
-/* Timer */
-.timer-container {
+/* Photo Container */
+.photo-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px;
+}
+.photo-container .box {
+    background-color: #fff;
+    border: 5px solid #333;
+    padding: 20px;
+    width: calc(33.33% - 40px);
     text-align: center;
-    background: rgba(20, 20, 20, 0.9);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
-    max-width: 300px;
-    display: none;
+    box-sizing: border-box;
 }
-
-/* Main Content (Workout & Timer) */
-.main-content {
-    display: none;
+.photo-container .box img {
     width: 100%;
-    max-width: 800px;
-    text-align: center;
-    margin-top: 80px;
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+    height: auto;
 }
