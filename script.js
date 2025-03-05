@@ -3,15 +3,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const loginForm = document.getElementById("login-form");
     const loginContainer = document.getElementById("login-container");
     const navbar = document.getElementById("navbar");
-    
+    const verticalMenu = document.getElementById("vertical-menu");
+    const timerContainer = document.getElementById("timer");
+
     loginForm.addEventListener("submit", function (event) {
         event.preventDefault();
         loginContainer.style.display = "none";
         navbar.style.display = "flex";
+        if (verticalMenu) verticalMenu.style.display = "block"; // Ensure vertical menu appears
     });
 
     // Timer functionality
-    let timer, totalSeconds, isRunning = false;
+    let timer, totalSeconds = 0, isRunning = false;
     const display = document.querySelector(".timer-display");
     const startBtn = document.getElementById("start");
     const pauseBtn = document.getElementById("pause");
@@ -29,20 +32,24 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!isRunning) {
             let mins = parseInt(minutesInput.value) || 0;
             let secs = parseInt(secondsInput.value) || 0;
-            totalSeconds = mins * 60 + secs;
-            if (totalSeconds > 0) {
-                isRunning = true;
-                timer = setInterval(() => {
-                    if (totalSeconds > 0) {
-                        totalSeconds--;
-                        updateDisplay();
-                    } else {
-                        clearInterval(timer);
-                        isRunning = false;
-                        alert("Time's up!");
-                    }
-                }, 1000);
+            if (mins === 0 && secs === 0) {
+                alert("Please enter a valid time!");
+                return;
             }
+
+            totalSeconds = mins * 60 + secs;
+            isRunning = true;
+            updateDisplay();
+            timer = setInterval(() => {
+                if (totalSeconds > 0) {
+                    totalSeconds--;
+                    updateDisplay();
+                } else {
+                    clearInterval(timer);
+                    isRunning = false;
+                    alert("Time's up!");
+                }
+            }, 1000);
         }
     }
 
@@ -119,6 +126,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Navbar event listeners
     document.getElementById("show-timer").addEventListener("click", function () {
-        document.getElementById("timer").style.display = "block";
+        timerContainer.style.display = timerContainer.style.display === "none" ? "block" : "none";
     });
 });
