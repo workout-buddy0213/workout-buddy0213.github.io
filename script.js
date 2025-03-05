@@ -1,47 +1,59 @@
-$(document).ready(function() {
+document.addEventListener("DOMContentLoaded", function () {
+    const loginForm = document.getElementById("login-form");
+    const loginContainer = document.getElementById("login-container");
+    const navbar = document.getElementById("navbar");
+    const menuBtn = document.getElementById("menu-btn");
+    const verticalMenu = document.getElementById("vertical-menu");
+    const exerciseSection = document.getElementById("exercise-section");
+    const workoutSection = document.getElementById("workout-section");
+    const exerciseBtn = document.getElementById("exercise-btn");
+    const workoutBtn = document.getElementById("workout-btn");
+    const logoutBtn = document.getElementById("logout-btn");
+    const darkModeToggle = document.getElementById("dark-mode-toggle");
+
     const validUsername = "group 5";
     const validPassword = "webdeveloper";
 
     // Handle login
-    $('#login-form').on('submit', function(event) {
+    loginForm.addEventListener("submit", function (event) {
         event.preventDefault();
-        const username = $('#username').val();
-        const password = $('#password').val();
-
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+        
         if (username === validUsername && password === validPassword) {
-            $('#login-container').addClass('d-none');
-            $('#navbar').removeClass('d-none');
+            loginContainer.style.display = "none";
+            navbar.style.display = "block";
         } else {
             alert("Invalid username or password!");
         }
     });
 
     // Handle logout
-    $('#logout-btn').click(function() {
-        $('#login-container').removeClass('d-none');
-        $('#navbar').addClass('d-none');
+    logoutBtn.addEventListener("click", function () {
+        loginContainer.style.display = "block";
+        navbar.style.display = "none";
     });
 
     // Toggle vertical menu
-    $('#menu-btn').click(function() {
-        $('#vertical-menu').toggle();
+    menuBtn.addEventListener("click", function () {
+        verticalMenu.style.display = verticalMenu.style.display === "none" || verticalMenu.style.display === "" ? "block" : "none";
     });
 
     // Toggle dark mode
-    $('#dark-mode-toggle').click(function() {
-        $('body').toggleClass('dark-mode');
+    darkModeToggle.addEventListener("click", function () {
+        document.body.classList.toggle("dark-mode");
     });
 
-    // Show exercises section
-    $('#exercise-btn').click(function() {
-        $('#exercise-section').show();
-        $('#workout-section').hide();
+    // Show exercise section
+    exerciseBtn.addEventListener("click", function () {
+        exerciseSection.style.display = "block";
+        workoutSection.style.display = "none";
     });
 
-    // Show workout plans section
-    $('#workout-btn').click(function() {
-        $('#workout-section').show();
-        $('#exercise-section').hide();
+    // Show workout section
+    workoutBtn.addEventListener("click", function () {
+        workoutSection.style.display = "block";
+        exerciseSection.style.display = "none";
     });
 
     // Workout plans
@@ -83,19 +95,23 @@ $(document).ready(function() {
     };
 
     // Show selected workout plan
-    $('.workout-select').click(function() {
-        const plan = $(this).data('plan');
-        const workout = workoutPlans[plan];
+    document.querySelectorAll(".workout-select").forEach(button => {
+        button.addEventListener("click", function () {
+            const plan = this.getAttribute("data-plan");
+            const workout = workoutPlans[plan];
 
-        $('#workoutTitle').text(workout.title);
-        $('#workoutDescription').text(workout.description);
-        
-        const exercisesContainer = $('#exercises');
-        exercisesContainer.empty();
-        workout.exercises.forEach(exercise => {
-            exercisesContainer.append(`<li>${exercise.name}: ${exercise.detail}</li>`);
+            document.getElementById("workoutTitle").textContent = workout.title;
+            document.getElementById("workoutDescription").textContent = workout.description;
+            
+            const exercisesContainer = document.getElementById("exercises");
+            exercisesContainer.innerHTML = "";
+            workout.exercises.forEach(exercise => {
+                const listItem = document.createElement("li");
+                listItem.textContent = `${exercise.name}: ${exercise.detail}`;
+                exercisesContainer.appendChild(listItem);
+            });
+
+            document.getElementById("workoutDetails").style.display = "block";
         });
-
-        $('#workoutDetails').show();
     });
 });
