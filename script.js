@@ -4,13 +4,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const loginContainer = document.getElementById("login-container");
     const navbar = document.getElementById("navbar");
     const verticalMenu = document.getElementById("vertical-menu");
+    const mainContent = document.querySelector(".main-content"); 
     const timerContainer = document.getElementById("timer");
 
     loginForm.addEventListener("submit", function (event) {
         event.preventDefault();
-        loginContainer.style.display = "none";
-        navbar.style.display = "flex";
-        if (verticalMenu) verticalMenu.style.display = "block"; // Ensure vertical menu appears
+        loginContainer.style.display = "none"; // Hide login screen
+        navbar.classList.add("show"); // Show navbar
+        verticalMenu.classList.add("show"); // Show vertical menu
+        mainContent.style.display = "block"; // Show main content
     });
 
     // Timer functionality
