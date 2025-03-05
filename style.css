@@ -1,12 +1,22 @@
 /* Global Styles */
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-color: #00FFCC;
+    --secondary-color: #007bff;
+    --text-color: #000;
+    --background-light: #f4f4f4;
+    --background-dark: #121212;
 }
 
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    background-color: #f4f4f4;
+    background-color: var(--background-light);
+    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,23 +28,24 @@ body {
 /* Navigation Bar */
 .navbar {
     width: 100%;
-    background-color: #00FFCC;
+    background-color: var(--primary-color);
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1;
+    z-index: 100;
     display: none; /* Initially hidden */
 }
+
 .navbar a {
-    color: #000;
+    color: var(--text-color);
     padding: 14px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
 }
+
 .navbar a:hover {
     background-color: #ddd;
-    color: black;
 }
 
 /* Vertical Menu */
@@ -42,22 +53,23 @@ body {
     display: none;
     position: absolute;
     top: 50px;
-    background-color: #00FFCC;
+    background-color: var(--primary-color);
     width: 200px;
     left: 0;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    z-index: 2;
+    z-index: 200;
 }
+
 .vertical-menu a {
-    color: #000;
+    color: var(--text-color);
     padding: 10px 15px;
     text-decoration: none;
     display: block;
-    font-size: 20px;
+    font-size: 18px;
 }
+
 .vertical-menu a:hover {
     background-color: #ddd;
-    color: black;
 }
 
 /* Login Form */
@@ -68,16 +80,18 @@ body {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     width: 300px;
     text-align: center;
-    z-index: 0;
 }
+
 h2 {
     margin-bottom: 20px;
 }
+
 label {
     font-size: 14px;
     margin-bottom: 5px;
     display: block;
 }
+
 input[type="text"], input[type="password"] {
     width: 100%;
     padding: 10px;
@@ -86,26 +100,32 @@ input[type="text"], input[type="password"] {
     border: 1px solid #ddd;
     font-size: 16px;
 }
+
 button {
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
+    background-color: var(--secondary-color);
     border: none;
     border-radius: 5px;
     color: #fff;
     font-size: 16px;
     cursor: pointer;
+    transition: background 0.3s;
 }
+
 button:hover {
     background-color: #0056b3;
 }
+
 .forgot-password {
     margin-top: 10px;
 }
+
 .forgot-password a {
-    color: #007bff;
+    color: var(--secondary-color);
     text-decoration: none;
 }
+
 .forgot-password a:hover {
     text-decoration: underline;
 }
@@ -118,6 +138,7 @@ button:hover {
     gap: 20px;
     padding: 20px;
 }
+
 .photo-container .box {
     background-color: #fff;
     border: 5px solid #333;
@@ -126,23 +147,26 @@ button:hover {
     text-align: center;
     box-sizing: border-box;
 }
+
 .photo-container .box img {
     width: 100%;
     height: auto;
     object-fit: cover;
 }
+
 .photo-container .box .description {
     margin-top: 10px;
     font-size: 14px;
     color: #333;
 }
 
-/* Responsive Photo Layout */
+/* Responsive Layout */
 @media (max-width: 768px) {
     .photo-container .box {
         width: calc(50% - 30px);
     }
 }
+
 @media (max-width: 480px) {
     .photo-container .box {
         width: 100%;
@@ -155,10 +179,12 @@ button:hover {
     text-align: center;
     margin-top: 50px;
 }
+
 .container {
     width: 80%;
     margin: 0 auto;
 }
+
 .workout-plan {
     background-color: #fff;
     padding: 20px;
@@ -166,20 +192,25 @@ button:hover {
     margin: 10px 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .workout-plan h2 {
-    color: #007BFF;
+    color: var(--secondary-color);
 }
+
 .workout-plan p {
     font-size: 16px;
     color: #555;
 }
+
 .exercises {
     margin-top: 20px;
 }
+
 .exercises ul {
     list-style-type: none;
     padding: 0;
 }
+
 .exercises li {
     padding: 5px 0;
     font-size: 16px;
@@ -188,15 +219,35 @@ button:hover {
 
 /* Dark Mode */
 .dark-mode {
-    background-color: #121212 !important;
+    background-color: var(--background-dark) !important;
     color: #ffffff !important;
 }
-.dark-mode .navbar, .dark-mode .vertical-menu {
+
+.dark-mode .navbar, 
+.dark-mode .vertical-menu {
     background-color: #008080;
 }
+
 .dark-mode .vertical-menu a {
     color: white;
 }
+
 .dark-mode .login-container {
     background-color: #333;
+    color: white;
+}
+
+.dark-mode input[type="text"], 
+.dark-mode input[type="password"] {
+    background-color: #555;
+    color: #fff;
+    border: 1px solid #777;
+}
+
+.dark-mode button {
+    background-color: #009688;
+}
+
+.dark-mode button:hover {
+    background-color: #00675b;
 }
