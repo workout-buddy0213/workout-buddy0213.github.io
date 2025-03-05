@@ -1,4 +1,4 @@
-/* Global Styles */
+/* Global Styles */ 
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,12 +7,12 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #1e1e1e, #3a3a3a);
-    color: white;
+    background: linear-gradient(135deg, #ffffff, #f0f0f0); /* Changed background to light gradient */
+    color: black; /* Changed text color to black */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Prevents full black background issue */
+    justify-content: flex-start;
     min-height: 100vh;
     animation: fadeIn 1s ease-in-out;
 }
@@ -24,7 +24,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    display: none; /* Hide initially */
+    display: none;
     justify-content: space-around;
     padding: 10px;
     opacity: 0;
@@ -40,9 +40,9 @@ body {
 
 /* Vertical Menu */
 .vertical-menu {
-    display: none; /* Hide initially */
+    display: none;
     position: fixed;
-    top: 60px; /* Below navbar */
+    top: 60px;
     left: 0;
     width: 200px;
     background-color: rgba(50, 50, 50, 0.95);
@@ -116,16 +116,16 @@ button:hover {
     border-radius: 12px;
     box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
     max-width: 300px;
-    display: none; /* Hide by default */
+    display: none;
 }
 
 /* Main Content (Workout & Timer) */
 .main-content {
-    display: none; /* Initially hidden, will be shown after login */
+    display: none;
     width: 100%;
     max-width: 800px;
     text-align: center;
-    margin-top: 80px; /* Prevent overlap with navbar */
+    margin-top: 80px;
 }
 
 /* Animations */
