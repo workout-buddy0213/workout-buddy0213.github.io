@@ -1,208 +1,102 @@
-document.addEventListener("DOMContentLoaded", function() {
-    console.log("DOM fully loaded and script running...");
+// ✅ Firebase config
+const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_AUTH_DOMAIN",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_STORAGE_BUCKET",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    appId: "YOUR_APP_ID"
+};
 
-    const navbar = document.querySelector('.navbar');
-    const exerciseSection = document.getElementById('exercise-section');
-    const workoutSection = document.getElementById('workout-section');
-    const exerciseBtn = document.getElementById('exercise-btn');
-    const workoutBtn = document.getElementById('workout-btn');
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
 
-    }
+let timerInterval;
+let seconds = 0;
 
-    // LOGIN HANDLER
-    const loginForm = document.getElementById('login-form');
-    const loginContainer = document.getElementById('login-container');
-    const navbar = document.querySelector('.navbar');
+// ✅ Timer Functions
+function formatTime(sec) {
+    const mins = String(Math.floor(sec / 60)).padStart(2, '0');
+    const secs = String(sec % 60).padStart(2, '0');
+    return `${mins}:${secs}`;
+}
 
-    const validUsername = "group 4";
-    const validPassword = "webdeveloper";
-
-    loginForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const username = document.getElementById('username').value.trim();
-        const password = document.getElementById('password').value.trim();
-
-        if (username === validUsername && password === validPassword) {
-            alert("Login successful!");
-            loginContainer.style.display = 'none';
-            navbar.classList.remove('d-none'); // Show the navbar
-        } else {
-            alert("Invalid login!");
-        }
-
-        const username = document.getElementById('username').value.trim();
-        const password = document.getElementById('password').value.trim();
-
-        if (username === validUsername && password === validPassword) {
-            alert("Login successful!");
-            loginContainer.style.display = 'none';
-            navbar.classList.remove('d-none');
-
-        } else {
-            alert("Invalid login!");
-        }
-    });
-
-    // Toggle workout and exercise section
-    if (exerciseBtn) {
-        exerciseBtn.addEventListener('click', function() {
-            exerciseSection.style.display = "block";
-            workoutSection.style.display = "none";
-        });
-    }
-
-    if (workoutBtn) {
-        workoutBtn.addEventListener('click', function() {
-            workoutSection.style.display = "block";
-            exerciseSection.style.display = "none";
-        });
-    }
-
-    <!-- Timer JavaScript -->
-    let countdown;
-    const startButton = document.getElementById("startButton");
-    const minutesInput = document.getElementById("minutes");
-    const secondsInput = document.getElementById("seconds");
-
-    minutesInput.addEventListener('input', validateInput);
-    secondsInput.addEventListener('input', validateInput);
-
-    function validateInput() {
-        startButton.disabled = (!minutesInput.value && !secondsInput.value);
-    }
-
-    startButton.addEventListener('click', () => {
-        let minutes = parseInt(minutesInput.value) || 0;
-        let seconds = parseInt(secondsInput.value) || 0;
-        let totalTime = minutes * 60 + seconds;
-
-        countdown = setInterval(() => {
-            if (totalTime <= 0) {
-                clearInterval(countdown);
-                alert("Time's up!");
-                return;
-            }
-            totalTime--;
-            updateTimerDisplay(totalTime);
+function startTimer() {
+    if (!timerInterval) {
+        timerInterval = setInterval(() => {
+            seconds++;
+            document.getElementById('timer').innerText = formatTime(seconds);
         }, 1000);
-    });
-
-    function updateTimerDisplay(totalTime) {
-        const minutes = Math.floor(totalTime / 60);
-        const seconds = totalTime % 60;
-        const formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-        document.getElementById('timer').textContent = formattedTime;
-        document.getElementById('nav-timer').textContent = formattedTime;
     }
+}
 
-    function resetTimer() {
-        clearInterval(countdown);
-        document.getElementById('timer').textContent = "00:00";
-    }
-
-
-
-    // Update both the main timer and the navbar timer
-        document.getElementById('timer').textContent = formattedTime;
-        document.getElementById('nav-timer').textContent = formattedTime;
-
-        updateProgressBar(totalTimeInSeconds, totalTime);
-    }, 1000);
+function stopTimer() {
+    clearInterval(timerInterval);
+    timerInterval = null;
 }
 
 function resetTimer() {
-    clearInterval(countdown);
-    document.getElementById('timer').textContent = "00:00";
-    document.getElementById('nav-timer').textContent = "00:00";
-    minutesInput.value = '';
-    secondsInput.value = '';
-    progressBar.style.width = '0%';
+    stopTimer();
+    seconds = 0;
+    document.getElementById('timer').innerText = formatTime(seconds);
 }
 
+// ✅ Event Listeners for Timer
+document.getElementById('startTimer').addEventListener('click', startTimer);
+document.getElementById('stopTimer').addEventListener('click', stopTimer);
+document.getElementById('resetTimer').addEventListener('click', resetTimer);
 
-    // Toggle theme
-    const themeToggleBtn = document.getElementById('theme-toggle');
-const body = document.body;
+// ✅ Auth Functions
+const authHeader = document.getElementById('authHeader');
+const authSubmitBtn = document.getElementById('authSubmitBtn');
+const switchAuthBtn = document.getElementById('switchAuthBtn');
 
-themeToggleBtn.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    const isDarkMode = body.classList.contains('dark-mode');
-    themeToggleBtn.textContent = isDarkMode ? '☀️' : '🌙';
+let isLogin = true;
+
+switchAuthBtn.addEventListener('click', () => {
+    isLogin = !isLogin;
+    authHeader.innerText = isLogin ? 'Login' : 'Sign Up';
+    authSubmitBtn.innerText = isLogin ? 'Login' : 'Sign Up';
 });
 
+document.getElementById('authForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-
-// Workout Plans Data
-function showWorkout(plan) {
-    const details = document.getElementById("workoutDetails");
-    const title = document.getElementById("workoutTitle");
-    const description = document.getElementById("workoutDescription");
-    const exercisesList = document.getElementById("exercises");
-
-    if (!workoutPlans[plan]) {
-        details.style.display = "none";
-        return;
+    if (isLogin) {
+        auth.signInWithEmailAndPassword(email, password)
+            .then(() => updateUI(true))
+            .catch(err => alert(err.message));
+    } else {
+        auth.createUserWithEmailAndPassword(email, password)
+            .then(() => updateUI(true))
+            .catch(err => alert(err.message));
     }
+});
 
-    const selectedPlan = workoutPlans[plan];
-    title.textContent = selectedPlan.title;
-    description.textContent = selectedPlan.description;
-    exercisesList.innerHTML = selectedPlan.exercises
-        .map(ex => `<li>${ex.name}: ${ex.detail}</li>`)
-        .join('');
+document.getElementById('logoutLink').addEventListener('click', () => {
+    auth.signOut().then(() => updateUI(false));
+});
 
-    details.style.display = "block";
-  }
-
-    const workoutPlans = {
-    "morning": {
-        title: "Morning Workout",
-        description: "A quick workout to kickstart your day and energize you.",
-        exercises: [
-            { name: "Jumping Jacks", detail: "3 minutes" },
-            { name: "Push-ups", detail: "3 sets of 10" },
-            { name: "Squats", detail: "3 sets of 12" }
-        ]
-    },
-    "daily": {
-        title: "Daily Workout",
-        description: "Daily workout to maintain strength and endurance.",
-        exercises: [
-            { name: "Burpees", detail: "3 sets of 10" },
-            { name: "Mountain Climbers", detail: "2 minutes" },
-            { name: "Lunges", detail: "3 sets of 10 each leg" }
-        ]
-    },
-    "sevenDays": {
-        title: "7 Days Workout",
-        description: "Weekly routine for balanced fitness.",
-        exercises: [
-            { name: "Push-ups", detail: "3 sets of 10" },
-            { name: "Plank", detail: "30 seconds" },
-            { name: "Squats", detail: "3 sets of 12" },
-            { name: "Jump Rope", detail: "2 minutes" }
-        ]
-    }
-};
-
-
-function showWorkout(workoutType) {
-    const workout = workoutPlans[workoutType];
-    document.getElementById('workoutTitle').textContent = workout.title;
-    document.getElementById('workoutDescription').textContent = workout.description;
-
-    const exercisesList = document.getElementById('exercises');
-    exercisesList.innerHTML = "";
-    workout.exercises.forEach(function(exercise) {
-        const li = document.createElement('li');
-        li.textContent = `${exercise.name}: ${exercise.detail}`;
-        exercisesList.appendChild(li);
-    });
-    document.getElementById('workoutDetails').style.display = "block";
+function updateUI(isLoggedIn) {
+    document.getElementById('loginLink').classList.toggle('d-none', isLoggedIn);
+    document.getElementById('signupLink').classList.toggle('d-none', isLoggedIn);
+    document.getElementById('logoutLink').classList.toggle('d-none', !isLoggedIn);
+    document.getElementById('timerSection').classList.toggle('d-none', !isLoggedIn);
+    document.getElementById('authSection').classList.toggle('d-none', isLoggedIn);
 }
 
-function updateProgressBar(remaining, total) {
-    const percent = (1 - remaining / total) * 100;
-    progressBar.style.width = `${percent}%`;
-}
+// ✅ Navbar Links
+document.getElementById('timerLink').addEventListener('click', () => {
+    document.getElementById('timerSection').classList.remove('d-none');
+    document.getElementById('authSection').classList.add('d-none');
+});
+
+document.getElementById('homeLink').addEventListener('click', () => {
+    document.getElementById('authSection').classList.remove('d-none');
+    document.getElementById('timerSection').classList.add('d-none');
+});
+
+// ✅ Firebase Auth State Change
+auth.onAuthStateChanged(user => updateUI(!!user));
