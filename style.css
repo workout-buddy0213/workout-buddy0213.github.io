@@ -5,249 +5,68 @@
     padding: 0;
 }
 
-:root {
-    --primary-color: #00FFCC;
-    --secondary-color: #007bff;
-    --text-color: #000;
-    --background-light: #f4f4f4;
-    --background-dark: #121212;
-}
-
+/* Default light mode */
 body {
     font-family: Arial, sans-serif;
-    background-color: var(--background-light);
-    color: var(--text-color);
+    background-color: #f4f4f4;
+    color: #000;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     flex-direction: column;
-    transition: background 0.3s, color 0.3s;
 }
 
-/* Navigation Bar */
+/* Dark mode */
+body.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Navbar */
 .navbar {
-    width: 100%;
-    background-color: var(--primary-color);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    display: none; /* Initially hidden */
-}
-
-.navbar a {
-    color: var(--text-color);
-    padding: 14px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.navbar a:hover {
-    background-color: #ddd;
-}
-
-/* Vertical Menu */
-.vertical-menu {
-    display: none;
-    position: absolute;
-    top: 50px;
-    background-color: var(--primary-color);
-    width: 200px;
-    left: 0;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    z-index: 200;
-}
-
-.vertical-menu a {
-    color: var(--text-color);
-    padding: 10px 15px;
-    text-decoration: none;
-    display: block;
-    font-size: 18px;
-}
-
-.vertical-menu a:hover {
-    background-color: #ddd;
+    background: linear-gradient(45deg, #00FFCC, #007BFF);
+    padding: 12px 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Login Form */
 .login-container {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     text-align: center;
+    width: 100%;
+    max-width: 400px;
 }
 
-h2 {
-    margin-bottom: 20px;
-}
-
-label {
-    font-size: 14px;
-    margin-bottom: 5px;
-    display: block;
-}
-
+/* Input Fields */
 input[type="text"], input[type="password"] {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin: 10px 0;
     border-radius: 5px;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
     font-size: 16px;
 }
 
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: var(--secondary-color);
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-.forgot-password {
-    margin-top: 10px;
-}
-
-.forgot-password a {
-    color: var(--secondary-color);
-    text-decoration: none;
-}
-
-.forgot-password a:hover {
-    text-decoration: underline;
-}
-
-/* Photo Gallery */
-.photo-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 20px;
-    padding: 20px;
-}
-
-.photo-container .box {
-    background-color: #fff;
-    border: 5px solid #333;
-    padding: 20px;
-    width: calc(33.33% - 40px);
-    text-align: center;
-    box-sizing: border-box;
-}
-
-.photo-container .box img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-}
-
-.photo-container .box .description {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #333;
-}
-
-/* Responsive Layout */
-@media (max-width: 768px) {
-    .photo-container .box {
-        width: calc(50% - 30px);
-    }
-}
-
-@media (max-width: 480px) {
-    .photo-container .box {
-        width: 100%;
-    }
-}
-
-/* Exercise Section */
-.exercise-title {
-    font-size: 30px;
-    text-align: center;
-    margin-top: 50px;
-}
-
-.container {
-    width: 80%;
-    margin: 0 auto;
-}
-
-.workout-plan {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    margin: 10px 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.workout-plan h2 {
-    color: var(--secondary-color);
-}
-
-.workout-plan p {
-    font-size: 16px;
-    color: #555;
-}
-
-.exercises {
+/* Timer */
+#timer-container {
     margin-top: 20px;
 }
 
-.exercises ul {
-    list-style-type: none;
-    padding: 0;
+#timer {
+    font-size: 2rem;
 }
 
-.exercises li {
-    padding: 5px 0;
-    font-size: 16px;
-    color: #333;
-}
-
-/* Dark Mode */
-.dark-mode {
-    background-color: var(--background-dark) !important;
-    color: #ffffff !important;
-}
-
-.dark-mode .navbar, 
-.dark-mode .vertical-menu {
-    background-color: #008080;
-}
-
-.dark-mode .vertical-menu a {
+/* Footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
     color: white;
-}
-
-.dark-mode .login-container {
-    background-color: #333;
-    color: white;
-}
-
-.dark-mode input[type="text"], 
-.dark-mode input[type="password"] {
-    background-color: #555;
-    color: #fff;
-    border: 1px solid #777;
-}
-
-.dark-mode button {
-    background-color: #009688;
-}
-
-.dark-mode button:hover {
-    background-color: #00675b;
+    padding: 10px;
 }
