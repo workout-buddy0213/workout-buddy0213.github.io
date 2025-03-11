@@ -1,36 +1,112 @@
 /* Global Styles */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-/* Default light mode */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
-}
+        /* Default light mode */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            color: #000;
+        }
 
-/* Dark mode */
-body.dark-mode {
-    background-color: #333;
-    color: #fff;
-}
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
 
-/* Navbar */
+/* Fix Navbar Box Shadow */
 .navbar {
     background: linear-gradient(45deg, #00FFCC, #007BFF);
     padding: 12px 20px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
+/* Make Navbar Fixed */
+.navbar.fixed-top {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
 
-/* Login Form */
+/* Fix Navbar Alignment */
+.navbar-nav {
+    margin-left: auto; /* Push links to the right */
+    display: flex;
+    align-items: center;
+}
+
+.navbar .navbar-brand {
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: white !important;
+}
+
+.navbar .nav-link {
+    font-size: 1rem;
+    padding: 8px 12px;
+    color: white !important;
+}
+
+        .navbar-nav .nav-link:hover {
+            color: #FFD700 !important; /* Gold on hover */
+        }
+
+/* Fix alignment and size for theme toggle */
+.theme-toggle-btn {
+    background-color: transparent;
+    color: #fff;
+    padding: 4px 8px;
+    font-size: 14px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+
+
+/* Dropdown fix */
+.dropdown-menu {
+    background-color: #007BFF;
+    border-radius: 8px;
+}
+
+.dropdown-item {
+    color: white !important;
+    font-size: 0.9rem;
+}
+
+.dropdown-item:hover {
+    background: #0056b3 !important;
+}
+
+
+/* Center Login Form */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+}
+
 .login-container {
     background: white;
     padding: 40px;
@@ -38,10 +114,52 @@ body.dark-mode {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     text-align: center;
     width: 100%;
-    max-width: 400px;
+    max-width: 400px; /* Ensures a good size on all screens */
 }
 
-/* Input Fields */
+
+h2 {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 0;
+    background-color: #007bff;
+    transition: width 0.3s ease;
+}
+
+.reset-button {
+    background-color: #f44336;
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+    border-radius: 5px;
+}
+
+.reset-button:hover {
+    background-color: #d32f2f;
+}
+
+/* Improve Input Fields */
 input[type="text"], input[type="password"] {
     width: 100%;
     padding: 12px;
@@ -51,13 +169,84 @@ input[type="text"], input[type="password"] {
     font-size: 16px;
 }
 
-/* Timer */
-#timer-container {
-    margin-top: 20px;
+/* Button Styling */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
 }
 
-#timer {
-    font-size: 2rem;
+button:hover {
+    background: #0056b3;
+}
+
+/* Forgot Password */
+.forgot-password {
+    margin-top: 10px;
+}
+
+.forgot-password a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+/* Photo Container */
+.photo-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px;
+}
+
+.photo-container .box {
+    background: #fff;
+    border: 5px solid #333;
+    padding: 20px;
+    width: 30%; /* Adjusted for better fit */
+    min-width: 250px; /* Prevents too small on mobile */
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.photo-container .box img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+
+
+/* Workout Plan */
+.workout-plan {
+    background: #fff;
+    padding: 20%;
+    border-radius: 8%;
+    margin: 10% 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.workout-plan h2 {
+    color: #007BFF;
+}
+
+.workout-plan-details {
+    display: none;
+    background: #fff;
+    padding: 20px;
+    margin-top: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
 /* Footer */
