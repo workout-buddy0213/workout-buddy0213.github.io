@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Workout Buddy</title>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
 </head>
@@ -15,9 +16,9 @@
         <h2>Login</h2>
         <form id="login-form">
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" required>
+            <input type="text" id="username" name="username" required />
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password" required />
             <button type="submit">Log In</button>
             <div class="forgot-password">
                 <a href="#">Forgot password?</a>
@@ -27,49 +28,61 @@
 </div>
 
 <!-- Navbar (Hidden initially) -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top d-none">
+<nav class="navbar navbar-expand-lg fixed-top d-none">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="logo.png" alt="Workout Buddy Logo" width="40" height="40" class="d-inline-block align-text-top" />
-            Workout Buddy
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="#">Workout Buddy</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="#" id="timer-btn">Timer</a></li>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="#">Music</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Logging Out</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">About</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">MENU</a>
-                    <ul class="dropdown-menu" aria-labelledby="menuDropdown">
-                        <li><a class="dropdown-item" href="#" id="exercise-btn">Exercises</a></li>
-                        <li><a class="dropdown-item" href="#" id="workout-btn">Workouts</a></li>
-                        <li><a class="dropdown-item" href="#">Health</a></li>
-                        <li><a class="dropdown-item" href="#">VitalEats</a></li>
+                    <a class="nav-link dropdown-toggle" href="#" id="exerciseDropdown" role="button" data-bs-toggle="dropdown">MENU</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Exercises</a></li>
+                        <li><a class="dropdown-item" href="#">Workouts</a></li>
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Timer: <span id="nav-timer">00:00</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-light" id="theme-toggle">🌙</button>
                 </li>
             </ul>
         </div>
-
-        <button class="theme-toggle-btn" id="theme-toggle">Dark Mode</button>
     </div>
 </nav>
 
 <!-- Timer Section -->
-<div id="timer-section" style="display: none;">
-    <h2>Workout Timer</h2>
-    <p id="timer-display">00:00</p>
-    <button id="start-btn">Start</button>
-    <button id="stop-btn">Stop</button>
-    <button id="reset-btn">Reset</button>
+<div id="timer-container">
+    <div id="timer">00:00</div>
+    <div class="inputs-container">
+        <input type="number" id="minutes" placeholder="Min" min="0" max="59" />
+        <span>:</span>
+        <input type="number" id="seconds" placeholder="Sec" min="0" max="59" />
+    </div>
+    <div>
+        <button id="startButton" disabled>Start Timer</button>
+        <button onclick="resetTimer()">Reset</button>
+    </div>
+    <div class="progress-bar">
+        <div class="progress-bar-fill" id="progress"></div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    &copy; 2025 Workout Buddy. All Rights Reserved.
 </div>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JavaScript -->
 <script src="script.js"></script>
 </body>
 </html>
