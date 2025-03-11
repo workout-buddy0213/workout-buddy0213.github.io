@@ -4,137 +4,56 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Workout Buddy</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-
-<!-- Login Form -->
-    <div class="container mt-5 pt-5">
-        <div class="login-container" id="login-container">
-            <h2>Login</h2>
-            <form id="login-form">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-                <button type="submit">Log In</button>
-                <div class="forgot-password">
-                    <a href="#">Forgot password?</a>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Navbar (Hidden initially) -->
-    <nav class="navbar navbar-expand-lg fixed-top d-none">
-        <div class="container-fluid">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
             <a class="navbar-brand" href="#">Workout Buddy</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="#">Music</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="exerciseDropdown" role="button" data-bs-toggle="dropdown">
-                            MENU
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Exercises</a></li>
-                            <li><a class="dropdown-item" href="#">Workouts</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Timer: <span id="nav-timer">00:00</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <button class="btn btn-outline-light" id="theme-toggle">🌙</button>
-                    </li>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#" id="homeLink">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="timerLink">Timer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="loginLink">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="signupLink">Sign Up</a></li>
+                    <li class="nav-item"><a class="nav-link d-none" href="#" id="logoutLink">Logout</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-
-
     <!-- Timer Section -->
-<div id="timer-container">
-    <div id="timer">00:00</div>
-    <div class="inputs-container">
-        <input type="number" id="minutes" placeholder="Min" min="0" max="59">
-        <span>:</span>
-        <input type="number" id="seconds" placeholder="Sec" min="0" max="59">
-    </div>
-    <div>
-        <button id="startButton" disabled>Start Timer</button>
-        <button onclick="resetTimer()">Reset</button>
-    </div>
-    <div class="progress-bar">
-        <div class="progress-bar-fill" id="progress"></div>
-    </div>
-</div>
-
-    <!-- Exercises Section -->
-    <div id="exercise-section" style="display: none;">
-        <div class="exercise-title">Exercises</div>
-        <div class="photo-container">
-            <div class="box">
-                <img src="https://homeworkouts.org/wp-content/uploads/anim-push-ups.gif" alt="Push-up">
-                <div class="description">Push-up: Strengthens upper body.</div>
-            </div>
-            <div class="box">
-                <img src="https://homeworkouts.org/wp-content/uploads/anim-sit-ups.gif" alt="Sit-up">
-                <div class="description">Sit-up: Targets the core muscles.</div>
-            </div>
-            <div class="box">
-                <img src="https://www.inspireusafoundation.org/wp-content/uploads/2022/08/chain-sumo-squat.gif" alt="Squat">
-                <div class="description">Squats: Builds lower body strength.</div>
-            </div>
-            <div class="box">
-                <img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/plank.gif" alt="Plank">
-                <div class="description">Plank: Strengthens core and back.</div>
-            </div>
-            <div class="box">
-                <img src="https://fitnessprogramer.com/wp-content/uploads/2021/08/High-Knee-Run.gif" alt="High Knees">
-                <div class="description">High Knees: Great for cardio.</div>
-            </div>
-            <div class="box">
-                <img src="https://i.ytimg.com/vi/uckYc_gtyf8/maxresdefault.jpg" alt="Mountain Climbers">
-                <div class="description">Mountain Climbers: Full-body workout.</div>
-            </div>
-        </div>
+    <div id="timerSection" class="container mt-5 d-none">
+        <h2>Workout Timer</h2>
+        <div id="timer">00:00</div>
+        <button id="startTimer" class="btn btn-success">Start</button>
+        <button id="stopTimer" class="btn btn-danger">Stop</button>
+        <button id="resetTimer" class="btn btn-secondary">Reset</button>
     </div>
 
-    <!-- Workout Plans Section -->
-    <div id="workout-section" style="display: none;">
-        <div class="container">
-            <h1 style="color: white;">Choose Your Workout Plan</h1>
-            <div class="workout-plan-buttons">
-                <button onclick="showWorkout('morning')">Morning Workout</button>
-                <button onclick="showWorkout('daily')">Daily Workout</button>
-                <button onclick="showWorkout('sevenDays')">7 Days Workout</button>
+    <!-- Firebase Auth Section -->
+    <div id="authSection" class="container mt-5">
+        <h2 id="authHeader">Login</h2>
+        <form id="authForm">
+            <div class="mb-3">
+                <input type="email" id="email" class="form-control" placeholder="Email" required />
             </div>
-            <div id="workoutDetails" class="workout-plan-details" style="display:none;">
-                <h2 id="workoutTitle"></h2>
-                <p id="workoutDescription"></p>
-                <ul id="exercises"></ul>
+            <div class="mb-3">
+                <input type="password" id="password" class="form-control" placeholder="Password" required />
             </div>
-        </div>
+            <button type="submit" class="btn btn-primary" id="authSubmitBtn">Login</button>
+            <button type="button" class="btn btn-secondary" id="switchAuthBtn">Switch to Sign Up</button>
+        </form>
     </div>
 
-    <!-- Footer -->
-<div class="footer">
-    &copy; 2025 Workout Buddy. All Rights Reserved.
-</div>
-
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Custom JavaScript -->
-<script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js"></script>
+    <script src="scripts.js"></script>
 </body>
 </html>
