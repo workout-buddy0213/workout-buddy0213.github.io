@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Buddy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="logo.png" alt="Workout Buddy Logo" width="40" height="40" class="d-inline-block align-text-top"> 
+          Workout Buddy
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="timer-btn">Timer</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Music</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Log In</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="signup.html">Sign Up</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> MENU </a>
+              <ul class="dropdown-menu" aria-labelledby="menuDropdown">
+                <li><a class="dropdown-item" href="#" id="exercise-btn">Exercises</a></li>
+                <li><a class="dropdown-item" href="#" id="workout-btn">Workouts</a></li>
+                <li><a class="dropdown-item" href="#">Health</a></li>
+                <li><a class="dropdown-item" href="#">VitalEats</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <button class="theme-toggle-btn" id="theme-toggle">Dark Mode</button>
+      </div>
+    </nav>
+
+    <!-- Timer Section -->
+    <div id="timer-section" style="display: none; text-align: center; padding: 20px;">
+      <h2>Workout Timer</h2>
+      <p id="timer-display" style="font-size: 2rem; font-weight: bold;">00:00</p>
+      <button id="start-btn">Start</button>
+      <button id="stop-btn">Stop</button>
+      <button id="reset-btn">Reset</button>
+    </div>
+
+    <!-- Exercises Section -->
+    <div id="exercise-section" style="display: none;">
+      <div class="exercise-title">Exercises</div>
+      <div class="photo-container">
+        <div class="box">
+          <img src="https://homeworkouts.org/wp-content/uploads/anim-push-ups.gif" alt="Push-up">
+          <div class="description">Push-up: Strengthens upper body.</div>
+        </div>
+        <div class="box">
+          <img src="https://homeworkouts.org/wp-content/uploads/anim-sit-ups.gif" alt="Sit-up">
+          <div class="description">Sit-up: Targets the core muscles.</div>
+        </div>
+        <div class="box">
+          <img src="https://www.inspireusafoundation.org/wp-content/uploads/2022/08/chain-sumo-squat.gif" alt="Squat">
+          <div class="description">Squats: Builds lower body strength.</div>
+        </div>
+        <div class="box">
+          <img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/plank.gif" alt="Plank">
+          <div class="description">Plank: Strengthens core and back.</div>
+        </div>
+        <div class="box">
+          <img src="https://fitnessprogramer.com/wp-content/uploads/2021/08/High-Knee-Run.gif" alt="High Knees">
+          <div class="description">High Knees: Great for cardio.</div>
+        </div>
+        <div class="box">
+          <img src="https://i.ytimg.com/vi/uckYc_gtyf8/maxresdefault.jpg" alt="Mountain Climbers">
+          <div class="description">Mountain Climbers: Full-body workout.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Workout Plans Section -->
+    <div id="workout-section" style="display: none;">
+      <div class="container">
+        <h1 style="color: white;">Choose Your Workout Plan</h1>
+        <div class="workout-plan-buttons">
+          <button onclick="showWorkout('morning')">Morning Workout</button>
+          <button onclick="showWorkout('daily')">Daily Workout</button>
+          <button onclick="showWorkout('sevenDays')">7 Days Workout</button>
+        </div>
+        <div id="workoutDetails" class="workout-plan-details" style="display:none;">
+          <h2 id="workoutTitle"></h2>
+          <p id="workoutDescription"></p>
+          <ul id="exercises"></ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <footer class="footer">
+      <p>&copy; 2025 Workout Buddy. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,580 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    box-sizing: border-box; 
+}
+
+th, td {
+    padding-top: 10px;
+    padding: 15px;
+    text-align: center; 
+}
+
+td {
+    background-color: #4CAF50;
+    color: white;
+    border: 2px solid #000;
+}
+
+td {
+    border: 2px dashed #000;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Default light mode */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    color: #000;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Navbar Styling with Red and White */
+.navbar {
+    background: linear-gradient(45deg, #ffffff, #ff0000);
+    /* White to Red gradient */
+    padding: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: white !important;
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    font-size: 1.1rem;
+    transition: 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #FFD700 !important;
+    /* Gold on hover */
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+    background-color: transparent;
+    border: 2px solid yellow;
+    /* Yellow border */
+    color: blue;
+    /* Blue text */
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.theme-toggle-btn:hover {
+    background-color: red;
+    /* Red background on hover */
+    color: white;
+    /* White text on hover */
+}
+
+.dropdown-menu {
+    background: #007BFF;
+    border-radius: 8px;
+    border: none;
+}
+
+.dropdown-item {
+    color: white !important;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.dropdown-item:hover {
+    background: #0056b3 !important;
+    color: #FFD700 !important;
+}
+
+/* Center Login Form */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Improve Input Fields */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+/* Timer Section with White and Red */
+#timer-section {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    margin: 50px auto;
+}
+
+#timer-display {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ff0000;
+    /* Red text */
+    margin-bottom: 20px;
+}
+
+button {
+    background: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Button Styling with Red */
+button {
+    background: #ff0000;
+    /* Red background */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #cc0000;
+    /* Darker red on hover */
+}
+
+/* Forgot Password */
+.forgot-password {
+    margin-top: 10px;
+}
+
+.forgot-password a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+/* Photo Container */
+.photo-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px;
+}
+
+.photo-container .box {
+    background: #fff;
+    border: 5px solid #333;
+    padding: 20px;
+    width: calc(33.33% - 40px);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.photo-container .box img {
+    width: 100%;
+    height: auto;
+}
+
+/* Workout Plan */
+.workout-plan {
+    background: #fff;
+    padding: 20%;
+    border-radius: 8%;
+    margin: 10% 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.workout-plan h2 {
+    color: #007BFF;
+}
+
+.workout-plan-details {
+    display: none;
+    background: #fff;
+    padding: 20px;
+    margin-top: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Footer Styling with Red */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background: rgba(255, 0, 0, 0.8);
+    /* Red background with transparency */
+    color: white;
+    padding: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    box-sizing: border-box; 
+}
+
+th, td {
+    padding-top: 10px;
+    padding: 15px;
+    text-align: center; 
+}
+
+td {
+    background-color: #4CAF50;
+    color: white;
+    border: 2px solid #000;
+}
+
+td {
+    border: 2px dashed #000;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Default light mode */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    color: #000;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Navbar Styling with Red and White */
+.navbar {
+    background: linear-gradient(45deg, #ffffff, #ff0000);
+    /* White to Red gradient */
+    padding: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: white !important;
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    font-size: 1.1rem;
+    transition: 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #FFD700 !important;
+    /* Gold on hover */
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+    background-color: transparent;
+    border: 2px solid yellow;
+    /* Yellow border */
+    color: blue;
+    /* Blue text */
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.theme-toggle-btn:hover {
+    background-color: red;
+    /* Red background on hover */
+    color: white;
+    /* White text on hover */
+}
+
+.dropdown-menu {
+    background: #007BFF;
+    border-radius: 8px;
+    border: none;
+}
+
+.dropdown-item {
+    color: white !important;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.dropdown-item:hover {
+    background: #0056b3 !important;
+    color: #FFD700 !important;
+}
+
+/* Center Login Form */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Full viewport height */
+}
+
+.login-container {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    /* Ensures a good size on all screens */
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Improve Input Fields */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+/* Timer Section with White and Red */
+#timer-section {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    margin: 50px auto;
+}
+
+#timer-display {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ff0000;
+    /* Red text */
+    margin-bottom: 20px;
+}
+
+button {
+    background: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Button Styling with Red */
+button {
+    background: #ff0000;
+    /* Red background */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #cc0000;
+    /* Darker red on hover */
+}
+
+/* Forgot Password */
+.forgot-password {
+    margin-top: 10px;
+}
+
+.forgot-password a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+/* Photo Container */
+.photo-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px;
+}
+
+.photo-container .box {
+    background: #fff;
+    border: 5px solid #333;
+    padding: 20px;
+    width: calc(33.33% - 40px);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.photo-container .box img {
+    width: 100%;
+    height: auto;
+}
+
+/* Workout Plan */
+.workout-plan {
+    background: #fff;
+    padding: 20%;
+    border-radius: 8%;
+    margin: 10% 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.workout-plan h2 {
+    color: #007BFF;
+}
+
+.workout-plan-details {
+    display: none;
+    background: #fff;
+    padding: 20px;
+    margin-top: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Footer Styling with Red */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background: rgba(255, 0, 0, 0.8);
+    /* Red background with transparency */
+    color: white;
+    padding: 10px;
+}
+
+.signup-container {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    /* Ensures a good size on all screens */
+}
+
+input[type="email"],
+input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
